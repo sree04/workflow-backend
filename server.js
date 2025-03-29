@@ -34,10 +34,11 @@ app.use(express.json());
 
 // Database configuration with reconnection settings
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'root1234',
-  database: process.env.DB_NAME || 'workflow_db',
+  host: process.env.MYSQLHOST || process.env.DB_HOST || 'localhost',
+  user: process.env.MYSQLUSER || process.env.DB_USER || 'root',
+  password: process.env.MYSQLPASSWORD || process.env.DB_PASSWORD || 'root1234',
+  database: process.env.MYSQL_DATABASE || process.env.DB_NAME || 'workflow_db',
+  port: process.env.MYSQLPORT || 3306,
   waitForConnections: true,
   connectionLimit: 20,
   queueLimit: 10,
